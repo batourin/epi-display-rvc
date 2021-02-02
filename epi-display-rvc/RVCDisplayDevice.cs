@@ -17,7 +17,7 @@ namespace RVCDisplay
 	/// Plugin device template for third party devices that use IBasicCommunication
 	/// </summary>
     [Description("RoomView Connected Display Essential Device")]
-    public class RVCDisplayDevice : TwoWayDisplayBase, IBasicVolumeWithFeedback, ICommunicationMonitor, IBridgeAdvanced, IRoutingInputsOutputs
+    public class RVCDisplayDevice : TwoWayDisplayBase, IBasicVolumeWithFeedback, ICommunicationMonitor, IBridgeAdvanced
     {
         /// <summary>
         /// It is often desirable to store the config
@@ -40,8 +40,6 @@ namespace RVCDisplay
 
             _config = config;
             _display = display;
-
-            OutputPorts = new RoutingPortCollection<RoutingOutputPort>();
 
             StatusFeedback = new IntFeedback(() => (int)CommunicationMonitor.Status);
             Feedbacks.Add(StatusFeedback);
@@ -449,12 +447,6 @@ namespace RVCDisplay
 
         #endregion
 
-
-        #region IRoutingOutputs Members
-
-        public RoutingPortCollection<RoutingOutputPort> OutputPorts { get; set;}
-
-        #endregion
     }
 }
 
